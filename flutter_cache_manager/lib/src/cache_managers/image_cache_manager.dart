@@ -63,7 +63,7 @@ mixin ImageCacheManager on BaseCacheManager {
 
   Future<bool> getExt(File file) async {
     if (!await file.exists()) {
-      debugPrint('文件不存在: ${file.path}');
+      debugPrint('file is not found: ${file.path}');
       return false;
     }
     final raf = await file.open();
@@ -83,7 +83,7 @@ mixin ImageCacheManager on BaseCacheManager {
       return true; // ICO
     }
 
-    return false; // 不支持的文件类型
+    return false;
   }
 
   final Map<String, Stream<FileResponse>> _runningResizes = {};
