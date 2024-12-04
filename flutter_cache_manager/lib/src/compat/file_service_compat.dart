@@ -63,15 +63,13 @@ class CompatFileServiceGetResponse implements FileServiceResponse {
 
   @override
   String get fileExtension {
-    // var fileExtension = '';
-    // final contentTypeHeader = _header(HttpHeaders.contentTypeHeader);
-    // if (contentTypeHeader != null) {
-    //   final contentType = ContentType.parse(contentTypeHeader);
-    //   fileExtension = contentType.fileExtension;
-    // }
-    // return fileExtension;
-
-    return '.jpeg';
+    var fileExtension = '';
+    final contentTypeHeader = _header(HttpHeaders.contentTypeHeader);
+    if (contentTypeHeader != null) {
+      final contentType = ContentType.parse(contentTypeHeader);
+      fileExtension = contentType.fileExtension;
+    }
+    return fileExtension;
   }
 
   @override
