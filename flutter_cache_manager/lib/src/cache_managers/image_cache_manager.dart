@@ -61,7 +61,7 @@ mixin ImageCacheManager on BaseCacheManager {
     _runningResizes.remove(resizedKey);
   }
 
-  Future<bool> getExt(File file) async {
+  Future<bool> _isImage(File file) async {
     if (!await file.exists()) {
       debugPrint('file is not found: ${file.path}');
       return false;
@@ -94,10 +94,10 @@ mixin ImageCacheManager on BaseCacheManager {
     int? maxWidth,
     int? maxHeight,
   ) async {
-    bool isSupported = await getExt(originalFile.file);
+    bool isImage = await _isImage(originalFile.file);
     final originalFileName = originalFile.file.path;
     final fileExtension = originalFileName.split('.').last;
-    if (isSupported) {
+    if (!isImage) {
       return originalFile;
     }
 
